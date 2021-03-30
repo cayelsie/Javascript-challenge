@@ -6,7 +6,13 @@ var tbody = d3.select("tbody");
 
 
 // Loop through entire array
-tableData.forEach((sighting) => {
+var createTable = selectData  => {
+
+  //Start with a clean slate
+  tbody.html("");
+
+  //Loop through entire array
+  selectData.forEach((sighting) => {
 
   //append one table row for each object in the array
   var row = tbody.append("tr");
@@ -21,6 +27,9 @@ tableData.forEach((sighting) => {
     cell.text(value);
   });
 });
+};
+
+createTable(tableData);
 
   //Set variable for the filter button and other input sites
   var filterButton = d3.select("#filter-btn");
@@ -28,14 +37,19 @@ tableData.forEach((sighting) => {
 // // //Create an event handler for the filter date button
 filterButton.on("click", search);
 
+
+
 function search() {
 
-//set variable for other sites
-var userInput1 = d3.select("#datetime");
-var userInput2 = d3.select("#city");
-var userInput3= d3.select("#state");
-var userInput4 = d3.select("#country");
-var userInput5 = d3.select("#shape");
+  //Prevents page from refreshing when working with a form
+  d3.event.preventDefault();
+
+//set variable for user input boxes
+  var userInput1 = d3.select("#datetime");
+  var userInput2 = d3.select("#city");
+  var userInput3= d3.select("#state");
+  var userInput4 = d3.select("#country");
+  var userInput5 = d3.select("#shape");
 
   //Set variable for the actual date the user types in
   var userDate = userInput1.property("value");
@@ -50,9 +64,14 @@ var userInput5 = d3.select("#shape");
   
 //    console.log(userInput2, userCity);
 
-//      //Filter the table based on the user's date selection
-  var results = tableData.filter(sightings => sightings.city === userCity);
-  console.log(sightings.city);
+  if(userDate){
+    var results = tableData.filter(sightings => sightings.datetime === userDate);
+
+  }
+
+//Filter the table based on the user's date selection
+  // var results = tableData.filter(sightings => sightings.city === userCity);
+  // console.log(sightings.city);
   //                                             sightings.city === userCity &&
   //                                             sightings.state === userState &&
   //                                             sightings.country === userCountry &&
