@@ -5,7 +5,7 @@ var tableData = data;
 var tbody = d3.select("tbody");
 
 
-// Loop through entire array
+// Create a reusable function for creating the table
 var createTable = selectData  => {
 
   //Start with a clean slate
@@ -29,20 +29,19 @@ var createTable = selectData  => {
 });
 };
 
+//Run the create table function with the original table data
 createTable(tableData);
 
-  //Set variable for the filter button and other input sites
-  var filterButton = d3.select("#filter-btn");
+//Set variable for the filter button
+var filterButton = d3.select("#filter-btn");
 
 // // //Create an event handler for the filter date button
 filterButton.on("click", search);
 
-
-
 function search() {
 
-  //Prevents page from refreshing when working with a form
-  d3.event.preventDefault();
+  // //Prevents page from refreshing when working with a form
+  // d3.event.preventDefault();
 
 //set variable for user input boxes
   var userInput1 = d3.select("#datetime");
@@ -64,10 +63,31 @@ function search() {
   
 //    console.log(userInput2, userCity);
 
-  if(userDate){
-    var results = tableData.filter(sightings => sightings.datetime === userDate);
-
+  if(userDate) {
+    var dateResults = tableData.filter(sightings => sightings.datetime === userDate);
+    createTable(dateResults);
   }
+  
+  else if (userCity) {
+    var cityResults = tableData.filter(sightings => sightings.city === userCity);
+    createTable(cityResults);
+  }
+
+  else if (userState) {
+    var stateResults = tableData.filter(sightings => sightings.state === userState);
+    createTable(stateResults);
+  }
+  else if (userCountry) {
+    var countryResults = tableData.filter(sightings => sightings.country === userCountry);
+    createTable(countryResults);
+  }
+
+  else if (userShape) {
+    var shapeResults = tableData.filter(sightings => sightings.shape === userShape);
+    createTable(shapeResults);
+  }
+};
+
 
 //Filter the table based on the user's date selection
   // var results = tableData.filter(sightings => sightings.city === userCity);
@@ -98,7 +118,7 @@ function search() {
 
 // };
 
-};
+// };
 
 
 
