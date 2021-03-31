@@ -37,6 +37,7 @@ var filterButton = d3.select("#filter-btn");
 // // //Create an event handler for the filter date button
 filterButton.on("click", search);
 
+//Set up a function for the multiple search filters
 function search() {
 
   // //Prevents page from refreshing when working with a form - don't really need this here
@@ -50,11 +51,11 @@ function search() {
   var userInput5 = d3.select("#shape");
 
   //Set variable for the actual date the user types in
-  var userDate = userInput1.property("value");
-  var userCity = userInput2.property("value");
-  var userState = userInput3.property("value");
-  var userCountry = userInput4.property("value");
-  var userShape = userInput5.property("value");
+  var userDate = userInput1.property("value")
+  var userCity = userInput2.property("value").toLowerCase();
+  var userState = userInput3.property("value").toLowerCase();
+  var userCountry = userInput4.property("value").toLowerCase();
+  var userShape = userInput5.property("value").toLowerCase();
 
 //    //Console log the date, city just to check
    
