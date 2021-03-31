@@ -1,6 +1,28 @@
+
 #main_image {
-    height: 500px;
-    width: 500px;
+    height: 300px;
+    width: 300px;
     margin-left: 10px;
     margin-right: 10px;
 }
+
+/* .form-control { */
+    /* background-color:rgb(233, 179, 108); */
+/* } */
+
+.list-group-item {
+    background-color:rgb(233, 179, 108);
+}
+
+.panel-default {
+    background-color: rgb(233, 179, 108)
+
+}
+
+.panel-heading {
+    text-align: center;
+    font-weight: bold;
+}
+   
+
+

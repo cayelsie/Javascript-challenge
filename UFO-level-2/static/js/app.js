@@ -4,7 +4,6 @@ var tableData = data;
 // set a variable for table body
 var tbody = d3.select("tbody");
 
-
 // Create a reusable function for creating the table
 var createTable = selectData  => {
 
@@ -29,7 +28,7 @@ var createTable = selectData  => {
 });
 };
 
-//Run the create table function with the original table data
+//Run the create table function with the original table data for display
 createTable(tableData);
 
 //Set variable for the filter button
@@ -40,7 +39,7 @@ filterButton.on("click", search);
 
 function search() {
 
-  // //Prevents page from refreshing when working with a form
+  // //Prevents page from refreshing when working with a form - don't really need this here
   // d3.event.preventDefault();
 
 //set variable for user input boxes
@@ -57,68 +56,46 @@ function search() {
   var userCountry = userInput4.property("value");
   var userShape = userInput5.property("value");
 
-//    //Console log the date just to check
+//    //Console log the date, city just to check
    
 //   console.log(userInput1, userDate);
   
 //    console.log(userInput2, userCity);
 
-  if(userDate) {
-    var dateResults = tableData.filter(sightings => sightings.datetime === userDate);
-    createTable(dateResults);
-  }
-  
-  else if (userCity) {
-    var cityResults = tableData.filter(sightings => sightings.city === userCity);
-    createTable(cityResults);
+//Set a separate variable for the original data to use in the multiple filters
+  var filterData = tableData;
+
+//If the date field has text, filter for it
+  if (userDate) {
+    filterData = filterData.filter(sightings => sightings.datetime === userDate);
   }
 
-  else if (userState) {
-    var stateResults = tableData.filter(sightings => sightings.state === userState);
-    createTable(stateResults);
-  }
-  else if (userCountry) {
-    var countryResults = tableData.filter(sightings => sightings.country === userCountry);
-    createTable(countryResults);
+//Continuing with only the possible date filtered data, if the city field has text, filter for it  
+  if (userCity) {
+    filterData = filterData.filter(sightings => sightings.city === userCity);
   }
 
-  else if (userShape) {
-    var shapeResults = tableData.filter(sightings => sightings.shape === userShape);
-    createTable(shapeResults);
+  //Continuing with only the possible date & city filtered data, if the state field has text, filter for it 
+  if (userState) {
+    filterData = filterData.filter(sightings => sightings.state === userState);
   }
+
+  //Continuing with only the possible date, city & state filtered data, if the country field has text, filter for it 
+  if (userCountry) {
+    filterData = filterData.filter(sightings => sightings.country === userCountry);
+  }
+
+  //Continuing with only the possible date, city, state & country filtered data, if the shape field has text, filter for it 
+  if (userShape) {
+    filterData = filterData.filter(sightings => sightings.shape === userShape);
+  }
+
+//Display only the filtered data in the table, using the createTable function
+  createTable(filterData);
+
 };
 
 
-//Filter the table based on the user's date selection
-  // var results = tableData.filter(sightings => sightings.city === userCity);
-  // console.log(sightings.city);
-  //                                             sightings.city === userCity &&
-  //                                             sightings.state === userState &&
-  //                                             sightings.country === userCountry &&
-  //                                             sightings.country === userShape);
-
-    //Overwrite the table display to empty to get ready to display the chosen results
-//     tbody.html("");
-
-// //      // Loop through entire array of the chosen results
-//   results.forEach((UFOdata) => {
-
-// //     //append one table row for each object in the array
-//     var row = tbody.append("tr");
-
-// //     //Loops through each object (dictionary) in the array
-//     Object.entries(UFOdata).forEach(([key, value]) => {
-
-// // //       // Append a cell to the row for each value in the object
-//       var cell = row.append("td");
-
-// // //       //Update each cell's text with each value in the object
-//       cell.text(value);
-//     });
-
-// };
-
-// };
 
 
 
