@@ -34,13 +34,13 @@ createTable(tableData);
 //Set variable for the filter button
 var filterButton = d3.select("#filter-btn");
 
-// // //Create an event handler for the filter date button
+//Create an event handler for the filter date button
 filterButton.on("click", search);
 
-//Set up a function for the multiple search filters
+//Set up a function for the multiple search filters, used with event handler
 function search() {
 
-  // //Prevents page from refreshing when working with a form 
+  //Prevents page from refreshing when working with a form 
   d3.event.preventDefault();
 
 //set variable for user input boxes
@@ -50,7 +50,7 @@ function search() {
   var userInput4 = d3.select("#country");
   var userInput5 = d3.select("#shape");
 
-  //Set variable for the actual date the user types in
+  //Set variable for the actual input the user types in, correct for extra spacing or capitals
   var userDate = userInput1.property("value").trim();
   var userCity = userInput2.property("value").toLowerCase().trim();
   var userState = userInput3.property("value").toLowerCase().trim();

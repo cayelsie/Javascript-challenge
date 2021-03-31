@@ -31,14 +31,17 @@ filterDate.on("click", searchDate);
 //Create a function for the event handler
 function searchDate() {
 
+  // //Prevents page from refreshing when working with a form 
+  d3.event.preventDefault();
+
   //Set variable for the area of the form where user inputs the date
   var userDate = d3.select("#datetime");
 
-  //Set variable for the actual date the user types in
-  var userValue = userDate.property("value");
+  //Set variable for the actual date the user types in, correct for extra spacing
+  var userValue = userDate.property("value").trim();
 
   //Console log the date just to check
-  console.log(userDate, userValue);
+  // console.log(userDate, userValue);
 
   //Filter the table based on the user's date selection
   var results = tableData.filter(sightings => sightings.datetime === userValue);

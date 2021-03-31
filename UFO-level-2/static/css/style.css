@@ -1,4 +1,4 @@
-
+/* Set the size of the ufo image */
 #main_image {
     height: 300px;
     width: 300px;
@@ -10,15 +10,16 @@
     /* background-color:rgb(233, 179, 108); */
 /* } */
 
+/* Set the background for the filtering areas of filter box, not the enter boxes */
 .list-group-item {
     background-color:rgb(233, 179, 108);
 }
-
+/* Set the background for the rest of the filter box (top and bottom) */
 .panel-default {
     background-color: rgb(233, 179, 108)
-
 }
 
+/* Set the 'Filter Search' text at top of box */
 .panel-heading {
     text-align: center;
     font-weight: bold;
