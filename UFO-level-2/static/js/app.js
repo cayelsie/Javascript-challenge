@@ -40,8 +40,8 @@ filterButton.on("click", search);
 //Set up a function for the multiple search filters
 function search() {
 
-  // //Prevents page from refreshing when working with a form - don't really need this here
-  // d3.event.preventDefault();
+  // //Prevents page from refreshing when working with a form 
+  d3.event.preventDefault();
 
 //set variable for user input boxes
   var userInput1 = d3.select("#datetime");
@@ -51,11 +51,11 @@ function search() {
   var userInput5 = d3.select("#shape");
 
   //Set variable for the actual date the user types in
-  var userDate = userInput1.property("value")
-  var userCity = userInput2.property("value").toLowerCase();
-  var userState = userInput3.property("value").toLowerCase();
-  var userCountry = userInput4.property("value").toLowerCase();
-  var userShape = userInput5.property("value").toLowerCase();
+  var userDate = userInput1.property("value").trim();
+  var userCity = userInput2.property("value").toLowerCase().trim();
+  var userState = userInput3.property("value").toLowerCase().trim();
+  var userCountry = userInput4.property("value").toLowerCase().trim();
+  var userShape = userInput5.property("value").toLowerCase().trim();
 
 //    //Console log the date, city just to check
    
