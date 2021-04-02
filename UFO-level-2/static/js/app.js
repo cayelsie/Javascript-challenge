@@ -23,7 +23,7 @@ var createTable = selectData  => {
     var cell = row.append("td");
 
     //Update each cell's text with each value in the object
-    cell.text(value);
+    cell.html(value);
   });
 });
 };
