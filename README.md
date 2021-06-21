@@ -1,4 +1,4 @@
-The purpose of this project was to showcase the data collected at ALIENS-R-REAL in an interactive website about UFO sightings.
+The purpose of this project was to create an interactive website about UFO sightings, using a small subset of UFO sighting data from 2010.
 
 UFO level 1: This website (index.html) displays the UFO sighting data in a table that is populated from a javascript file (data.js). The javascript file called app.js uses d3 to allow for the population of the table on the website, as well as allowing a user to search for a specific date. The data is then filtered for that date and only that data is displayed. A functional navbar button allows for refreshing of the table to re-display all of the data again.
 
